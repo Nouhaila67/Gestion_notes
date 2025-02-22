@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="container">
+<h1 class="text-center">Dashboard</h1>
+<p class="text-center">Total Students: <span th:text="${studentCount}"></span></p>
+
+<canvas id="studentsChart"></canvas>
+
+<script th:inline="javascript">
+    var studentsByLevel = /*[[${studentsByLevel}]]*/ {};
+    var labels = Object.keys(studentsByLevel);
+    var data = Object.values(studentsByLevel);
+
+    var ctx = document.getElementById('studentsChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Number of Students',
+                data: data,
+                backgroundColor: 'rgba(54, 162, 235, 0.6)'
+            }]
+        }
+    });
+</script>
+
+<a class="btn btn-primary mt-3" href="/students">Manage Students</a>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .stats {
+            font-size: 24px;
+            color: #4CAF50;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            background: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+        a:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<h1>Bienvenue sur le Dashboard</h1>
+<p>Nombre total d'étudiants : <span th:text="${studentCount}"></span></p>
+<a href="/students">Gérer les étudiants</a>
+</body>
+</html>
