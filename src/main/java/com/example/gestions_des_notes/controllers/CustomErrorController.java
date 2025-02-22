@@ -7,9 +7,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
     public class CustomErrorController implements ErrorController {
 
-        @GetMapping("/error")
+            @GetMapping("/error")
         public String handleError() {
             return "Oops! Something went wrong.";
         }
+
+
     }
 

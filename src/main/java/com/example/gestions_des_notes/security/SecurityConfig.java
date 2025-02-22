@@ -21,7 +21,8 @@ public class SecurityConfig {
                         .anyRequest().permitAll()
                 )
                 .formLogin(login -> login
-                        .loginPage("/login")
+                        .loginPage("/custom-login")
+                        .loginProcessingUrl("/login")
                         .defaultSuccessUrl("/students", true)
                         .permitAll()
                 )

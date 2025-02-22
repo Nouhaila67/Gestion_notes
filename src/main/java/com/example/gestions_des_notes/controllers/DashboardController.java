@@ -29,6 +29,9 @@ public class DashboardController {
         model.addAttribute("studentsByLevel", studentsByLevel);
         return "dashboard";
     }
-}
+    @GetMapping("/custom-login")
+    public String showLoginPage() {
+        return "/login";
+    }}
 
 
